@@ -181,8 +181,7 @@ Detection results can contain false positives and false negatives. The project i
 Live Demo
 
 The current frontend is deployed through GitHub Pages:
-
-https://vlastimir0500.github.io/prompt-shield/
+https://rattandeep0500.github.io/prompt-shield/
 
 Project Status
 
