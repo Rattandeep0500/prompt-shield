@@ -1,198 +1,134 @@
-Prompt Shield
+# Prompt Shield
 
-AI Prompt Security & Adversarial Testing Platform
+### AI Prompt Security & Adversarial Testing Platform
 
-Prompt Shield is a research-oriented security project focused on detecting and analyzing adversarial prompts, prompt injection, jailbreak patterns, prompt leakage, and data-exfiltration attempts against AI systems.
+Prompt Shield is a research-oriented AI security platform for detecting, analyzing, and evaluating adversarial prompts against AI systems.
 
-Current status: Basic research prototype — actively under development and will be expanded substantially over time.
+It focuses on **prompt injection, jailbreaks, prompt leakage, obfuscation, multi-turn attacks, and data-exfiltration attempts**, while providing threat scoring, attack classification, explanations, analytics, and controlled adversarial testing.
 
-Overview
+> **Status:** Research prototype — actively under development.
 
-Prompt Shield explores how a dedicated security layer can identify potentially malicious instructions before they can influence an AI system.
+---
 
-The current version provides a dashboard for:
+## Overview
 
-Prompt scanning and threat classification
+Large language models introduce a new security boundary: the natural-language interface.
 
-Threat scoring and technique identification
+Prompt Shield explores how a dedicated security layer can analyze untrusted instructions before they influence an AI system.
 
-Prompt injection and jailbreak analysis
+The current prototype provides a browser-based security dashboard containing:
 
-Controlled adversarial testing through an Attack Lab
+- Prompt scanning and threat classification
+- Threat scoring and attack-technique identification
+- Prompt injection and jailbreak analysis
+- Controlled adversarial testing through an **Attack Lab**
+- Scan and simulation history
+- Security analytics and reporting
+- Dataset export
+- AI model monitoring and management interfaces
 
-Scan and simulation history
+The architecture and detection engine are intentionally designed to evolve as the project moves toward reproducible AI-security research.
 
-Analytics and reporting
+---
 
-Dataset export
+## Core Capabilities
 
-AI model monitoring and management interface
+### Prompt Scanner
 
-This is the initial version of the project. The architecture, detection methods, evaluation framework, and model integrations will continue to evolve as development progresses.
+Analyze an input prompt and identify potentially malicious or adversarial behavior.
 
-Current Detection Areas
+The scanner is designed to investigate:
 
-The current prototype focuses on several common attack families:
+- Attack category
+- Threat level
+- Suspicious patterns
+- Potential security impact
+- Detection reasoning
 
-Direct prompt injection
+The objective is not simply to classify a prompt as malicious or benign, but to provide an interpretable assessment of **why** the input may represent a security risk.
 
-Indirect prompt injection
+---
 
-Role-play / persona jailbreaks
+### Attack Lab
 
-Prompt leaking
+The **Attack Lab** provides a controlled environment for evaluating AI-system resilience against adversarial prompts.
 
-Encoding and obfuscation
+Current research directions include:
 
-Context / format manipulation
+- Direct prompt injection
+- Indirect prompt injection
+- Role-play and persona jailbreaks
+- Prompt leakage
+- Encoding and obfuscation
+- Context manipulation
+- Format manipulation
+- Multi-turn escalation
+- Data-exfiltration attempts
 
-Multi-turn escalation
+Future versions will expand the evaluation framework to include:
 
-Data-exfiltration attempts
+- Paraphrased and transformed attacks
+- RAG-based attacks
+- Tool-use attacks
+- Agentic attacks
+- Multi-stage attack chains
+- Cross-model evaluation
 
-The goal is not simply to flag suspicious text, but to provide an explanation of why an input may represent a security risk.
+---
 
-Attack Lab
+## Detection Taxonomy
 
-The Attack Lab is designed to evaluate how an AI system responds to controlled adversarial probes.
+Prompt Shield currently focuses on several major attack families:
 
-It currently provides a framework for testing attack categories and producing a resilience assessment.
+| Attack Family | Description |
+|---|---|
+| Direct Injection | Malicious instructions inserted directly into a prompt |
+| Indirect Injection | Instructions originating from external or retrieved content |
+| Jailbreaks | Attempts to bypass model safety or behavioral constraints |
+| Prompt Leakage | Attempts to extract hidden instructions or system prompts |
+| Obfuscation | Encoded, transformed, or concealed malicious instructions |
+| Context Manipulation | Attempts to alter the model's interpretation of instructions |
+| Multi-Turn Escalation | Attacks distributed across multiple interactions |
+| Data Exfiltration | Attempts to cause sensitive information to be revealed |
 
-The longer-term goal is to expand this into a reproducible adversarial evaluation framework covering:
+The taxonomy is expected to expand as new attack techniques and research findings are incorporated.
 
-Different model families
+---
 
-Different attack strategies
+## Architecture
 
-Obfuscated and paraphrased attacks
+The current prototype is centered around a browser-based security dashboard.
 
-Multi-turn attacks
-
-RAG-based attacks
-
-Tool-use and agentic attacks
-
-Architecture
-
-The project is currently centered around a browser-based security dashboard with a path toward a server-side analysis architecture:
-
+```text
 User / Application
-        │
-        ▼
-  Prompt Shield
-      Scanner
-        │
-   ┌────┴─────┐
-   ▼          ▼
-Rule-based   Model-based
-analysis     analysis
-   │          │
-   └────┬─────┘
-        ▼
- Threat Assessment
-        │
-   ┌────┴─────┐
-   ▼          ▼
-Explanation  Risk Score
-        │
-        ▼
-   Security Report
-
-For production deployment, model credentials and privileged AI-system access will be kept behind a server-side API rather than exposed in the frontend.
-
-Research Direction
-
-A major goal of Prompt Shield is to move from a functional prototype toward measurable AI-security research.
-
-Future evaluation will investigate metrics such as:
-
-Precision
-
-Recall
-
-F1 score
-
-False-positive rate
-
-False-negative rate
-
-Attack-family coverage
-
-Model resilience
-
-Performance against unseen attack variants
-
-The project will also explore whether combining deterministic security rules with model-based analysis can improve detection performance without creating excessive false positives.
-
-Development Roadmap
-
-Completed
-
-Security-focused dashboard
-
-Prompt Scanner
-
-Threat classification
-
-Threat scoring
-
-Attack Lab interface
-
-Attack-vector taxonomy
-
-Analytics
-
-Reports
-
-Dataset export
-
-GitHub Pages deployment
-
-In development
-
-Production backend
-
-Secure model/provider adapters
-
-Persistent database
-
-Authentication and authorization
-
-Rate limiting
-
-Reproducible adversarial dataset
-
-Automated benchmark runner
-
-Precision / recall / F1 evaluation
-
-RAG injection testing
-
-Agentic/tool-use security testing
-
-Security regression tests
-
-Important Note
-
-Prompt Shield is currently a basic research prototype, not a production security product.
-
-Detection results can contain false positives and false negatives. The project is being developed iteratively, with the intention of improving the detection engine, evaluation methodology, backend architecture, and attack coverage over time.
-
-Live Demo
-
-The current frontend is deployed through GitHub Pages:
-https://rattandeep0500.github.io/prompt-shield/
-
-Project Status
-
-This repository represents the current development stage of Prompt Shield.
-
-The project will continue to be updated over time as new detection techniques, evaluation methods, model integrations, and security capabilities are developed.
-
-Security
-
-See SECURITY.md for the project's security principles and responsible-testing guidance.
-
-License
-
-No open-source license has been selected yet. Until a license is added, default copyright restrictions apply.
+        |
+        v
++----------------------+
+|   Prompt Shield      |
+|      Scanner         |
++----------+-----------+
+           |
+     +-----+-----+
+     |           |
+     v           v
+Rule-Based    Model-Based
+Analysis      Analysis
+     |           |
+     +-----+-----+
+           |
+           v
++----------------------+
+|  Threat Assessment   |
++----------+-----------+
+           |
+     +-----+-----+
+     |           |
+     v           v
+Risk Score   Explanation
+     |           |
+     +-----+-----+
+           |
+           v
++----------------------+
+|   Security Report    |
++----------------------+
